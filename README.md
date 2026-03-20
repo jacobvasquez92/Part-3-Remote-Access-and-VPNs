@@ -3,8 +3,8 @@ By Jacob Vasquez
 
 This plan addresses the security requirements for the implementation of a remote workforce by focusing on three core directives: establishing secure remote access to the internal network, implementing controls for preventing unauthorized access, and protecting all information transmitted between remote users and organizational servers from snooping. The deployment of a Virtual Private Network (VPN), specifically an SSL/TLS VPN, is the solution chosen to create a secure, encrypted transmission channel, balancing high security with operational flexibility and user-friendly experience.  
 
-### Challenges of a Remote Workforce  
----
+## Challenges of a Remote Workforce  
+
 Fundamental security issues introduced by a remote workforce are increased attack surface and the breakdown of the standard network perimeter.  The risk of successful phishing attacks has increased among remote workers because an "at home" environment often leads to distractions, making them more likely to click on suspicious links (Pratt, 2025).  Remote workers’ local machines and accompanying software may be unsecure and vulnerable.  With an increase in Bring Your Own Device (BYOD) policies, it becomes more difficult to confirm secure devices and if remote workers are adhering to security policies.  
 
 Typically, remote workers rely on residential Internet Service Providers (ISPs) and network devices that may interfere with corporate connectivity.  Additional risks are at-home Wi-Fi and endpoint passwords that can be weak, and devices potentially in need of patching and updates.  An unsecure local host is susceptible to intrusion and can lead to a compromise of the corporate network.  
@@ -13,16 +13,16 @@ The decision to implement a remote workforce at its core depends on the ability 
 
 The solution to connecting a dispersed remote workforce comes by way of a Virtual Private Network (VPN).  VPNs come in many forms, satisfying various organizational demands.  The VPN deployment options that were considered to try and satisfy the directives of this plan were Internet Protocol Security (IPsec) and Secure Socket Layer/Transport Layer Security (SSL/TLS).  Both structures provide data confidentiality through strong cryptographic encryption and key exchange architecture. Therefore, the selection will come down to operational efficiency, noting performance and complexity, and preventing unauthorized access through granular access control mechanisms.  
 
-### Operating in the OSI Model  
----
+## Operating in the OSI Model  
+
 IPsec VPN and SSL/TLS VPN operate at different layers of the Open Systems Interconnection (OSI) Model, IPsec at Layer 3 (Network) and SSL/TLS at Layer 4 (Transport) and Layer 7 (Application).  Operating at different layers has profound network implications.  
 
 Operating at Layer 3 gives IPsec the ability to secure all traffic between endpoints regardless of the application being used. Comprehensive network-wide encryption is the benefit of sitting above the IP layer.  
 
 SSL/TLS operates at Layer 4 and Layer 7, primarily sitting at Layer 7.  Operating at Layer 7 allows the use of widely accepted TLS protocol to create secure encrypted tunnels.  Adaptable to remote workers, web specific application sessions are secured allowing access to corporate resources from a user’s standard web browser.  
 
-### Fundamental VPN Deployment with Recommendations  
----
+## Fundamental VPN Deployment with Recommendations  
+
 *_IPsec:_* IPsec uses Internet Key Exchange (IKE), Encapsulating Security Payload (ESP), and Authentication Header (AH) protocols to establish security associations (SA), creating secure endpoint communications.  These protocols work together to create, at their most secure, a full-tunnel connection that encapsulates a packet in its entirety.  IPsec, fundamentally, provides data confidentiality, integrity, and authentication.  
 
 There are several key drawbacks of IPsec.  First is the operational complexity in configuration and system management.  Dedicated VPN client software needs to be deployed and managed on all user devices, representing a more complex deployment than browser-based SSL/TLS.  Additionally, the use of certificate authentication requires careful certificate management and planning, including generating and signing server certificates, and unique user certificates that must be installed on user devices.  Network Address Translation (NAT) and Port Address Translation (PAT) typically used in residential and public networks conflicts with IPsec protocols and can cause connection failures.  The work around is NAT Traversal (NAT-T) but this adds another layer of complexity to an already complex configuration.  
@@ -41,13 +41,29 @@ The most beneficial attribute of SSL/TLS VPN is Granular Access Control (GAC).  
 
 Based on the information provided, it is recommended to move forward with SSL/TLS VPN to satisfy the onset of a remote workforce.  The ease of large-scale deployment, a user-friendly experience, the flexibility of BYOD deployment, and superior access control make it ideal for Corporation Techs.  
 
-## Additional Considerations:  
+## Additional Considerations  
 
 Another option to consider is the built-in Microsoft server product Remote Desktop Services (RDS).  RDS can operate as a Remote Desktop Session Host providing pools of desktop sessions and applications for daily use, or as a Remote Desktop Virtualization Host providing personal desktop sessions as virtual machines.  Two important functions of RDS are RD RemoteApp and RD Web Access that help alleviate the need for VPN access for certain scenarios.  Regardless of a user’s OS, RD RemoteAPP allows the user to start a desktop session from their Start Menu as if they are logging on to their local machine.  RD Web Access, in conjunction with RD RemoteApp, can launch in a web browser and access an intranet or be accessed from the internet.  Remote clients have access to internal network resources without the use of a VPN.  
 
 Ideally, RDS turns out to be a viable solution when users need access to specific applications or need full control of a remote machine.  RDS creates a seamless user experience with low overhead, especially for power users needing high computing power.  IT administrators maintain centralized access control over user sessions and permissions while server management is also centralized for maintenance and updates.  
 
+## References  
 
+Adivi. (2024, July 20). Remote desktop vs. VPN: What's the difference? Adivi. https://adivi.com/blog/remote-desktop-vs-vpn-whats-the-difference/ 
+
+Check Point Software. (n.d.). What is an SSL VPN? Check Point Software. https://www.checkpoint.com/cyber-hub/network-security/what-is-vpn/what-is-an-ssl-vpn/ 
+
+Cloudflare. (n.d.). IPsec vs. SSL VPN. Cloudflare. https://www.cloudflare.com/learning/network-layer/ipsec-vs-ssl-vpn/  
+
+InstaSafe. (2024, December 2). What is granular access control? The six Ws explained. InstaSafe. https://instasafe.com/blog/what-is-granular-access-control/  
+
+Kumar, D. (2025, November 3). Understanding security associations in cybersecurity | Authority Hub - Where authentication meets artistry. MojoAuth. https://mojoauth.com/ciam-101/security-association#what-is-a-security-association  
+
+Pratt, M. (2025, June 25). 10 remote work cybersecurity risks and how to prevent them. Tech Target. https://www.techtarget.com/searchsecurity/tip/Remote-work-cybersecurity-12-risks-and-how-to-prevent-them  
+
+Turbli. (2025, November 7). DFW/MAD/2025-11-07. Turbli. https://turbli.com/DFW/MAD/2025-11-07/  
+
+wolfSSL. (2025, February 12). IPsec vs TLS: what are the differences. wolfSSL. https://www.wolfssl.com/ipsec-vs-tls-what-are-the-differences/  
 
 
 
