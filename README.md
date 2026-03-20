@@ -1,1 +1,3 @@
-# Part-3-Remote-Access-and-VPNs
+# Part-3: Remote Access and VPNs  
+
+This plan addresses the security requirements for the implementation of a remote workforce by focusing on three core directives: establishing secure remote access to the internal network, implementing controls for preventing unauthorized access, and protecting all information transmitted between remote users and organizational servers from snooping. The deployment of a Virtual Private Network (VPN), specifically an SSL/TLS VPN, is the solution chosen to create a secure, encrypted transmission channel, balancing high security with operational flexibility and user-friendly experience.
